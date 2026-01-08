@@ -31,15 +31,63 @@ public class fraction
         setNums(f.numerator, f.denominator);
     }
     
+    public String toString()
+    {
+        return numerator + "/" + denominator;
+    }
+    
     public void setNums(int num, int den)
     {
-        numerator = num;
+        this.numerator = num;
         
-        if (den != 0) denominator = den;
+        if (den != 0) this.denominator = den;
         else
         {
-            denominator = 1;
+            this.denominator = 1;
             System.out.println("DNEOMNINATOR cant BE ZEROI");
         }
+    }
+    
+    //getters
+    public int getNum()
+    {
+        return numerator;
+    }
+    
+    public int getDen()
+    {
+        return denominator;
+    }
+    
+    public double toDecimal()
+    {
+        return (double) numerator / denominator;
+    }
+    
+    //setters
+    public void reduce()
+    {
+        int GCF = 1;
+        int i = GCF;
+        while (i <= Math.min(numerator, denominator))
+        {
+            if (numerator % i == 0 && denominator % i == 0)
+            {
+                GCF = i;
+            }
+            i++;
+        }
+        numerator /= GCF;
+        denominator /= GCF;
+    }
+    
+    public void setNum(int num)
+    {
+        numerator = num;
+    }
+    
+    public void setDen(int den)
+    {
+        denominator = den;
     }
 }
