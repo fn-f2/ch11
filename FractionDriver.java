@@ -20,19 +20,17 @@ public class FractionDriver
         System.out.println("d: " + d);
         System.out.println(PI().getNum() + "/" + PI().getDen());
     }
-        
-    public static fraction approx (fraction f)
-    {
-        if (Math.abs(Math.PI-f.toDecimal()) < EPSILON) return f;
-        
-        if (f.toDecimal()>Math.PI) f.setDen(f.getDen()+1);
-        f.setNum(f.getNum()+1);
-        return approx(f);
-    }
     
-        
     public static fraction PI()
-    {   
-        return approx(new fraction(19, 6));
+    {
+        fraction f = new fraction(19, 6);
+        
+        while (Math.abs(Math.PI-f.toDecimal()) >= EPSILON)
+        {
+            if (f.toDecimal()>Math.PI) f.setDen(f.getDen()+1);
+            else f.setNum(f.getNum()+1);
+        }
+        
+        return f;
     }
 }
