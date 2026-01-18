@@ -89,7 +89,6 @@ public class fraction
         else
         {
             this.denominator = 1;
-            System.out.println("DNEOMNINATOR cant BE ZEROI");
         }
     }
 
